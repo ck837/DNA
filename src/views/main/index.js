@@ -34,21 +34,27 @@ function Main() {
   return (
     <div className="main-content">
       {/* <h2 >Novel_Transformer_Networks_for_Improved_Sequence_Labeling_in_genomics </h2> */}
-      <div className="main-function-button">
-        <button
-          className="funciton-button"
-        >
-          导入
-        </button>
-
-        <button
-          className="funciton-button"
-          onClick={() => {
-            handleGen()
-          }}
-        >
-          生成
-        </button>
+      <div className="main-function-button" style={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>
+        <div className="funciton-button">
+          <label htmlFor="file-input" style={{ fontSize: "14px", display: "flex", alignItems: "center", justifyContent: "center", height: '100%' }}>导入</label>
+          <input
+            id="file-input"
+            type="file"
+            onChange={(e) => onFileSelected(e)}
+            style={{ display: "none" }}
+          />
+        </div>
+        <div style={{ width: '40%', height: '30%' }}>
+          <button
+            style={{ width: '100%', height: '100%' }}
+            className="funciton-button"
+            onClick={() => {
+              handleGen()
+            }}
+          >
+            生成
+          </button>
+        </div>
       </div>
       <div className="main-text">
         <textarea
