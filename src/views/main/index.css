@@ -4,12 +4,12 @@
     /* border: 1px solid; */
 }
 .main-function-button{
-    
     height: 30%;
     border: 1px solid;
     
 }
 .funciton-button{
+    background-color: white;
     margin-top: 5%;
     margin-left: 5%;
     width: 40%;
@@ -29,6 +29,8 @@
     border: 1px solid;
 }
 .atcg-button{
+    background-color: white;
+    border: 1px solid black;
     margin-top: 5%;
     margin-left: 4%;
     width: 20%;

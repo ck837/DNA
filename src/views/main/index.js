@@ -54,7 +54,7 @@ function Main() {
         <textarea
           value={text}
           onChange={handleTextareaChange}
-          style={{ width: "100%", height: "70%" }}
+          style={{ width: "100%", height: "70%", backgroundColor: 'transparent' }}
         ></textarea>
       </div>
       <div className="main-atcg-button">
