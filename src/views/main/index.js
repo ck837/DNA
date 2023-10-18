@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function Main() {
   const [text, setText] = useState("");
   const navigate = useNavigate();
-  
+
   function onFileSelected(event) {
     var selectedFile = event.target.files[0];
     var reader = new FileReader();
@@ -18,11 +18,11 @@ function Main() {
     reader.readAsText(selectedFile);
   }
 
-  function handleGen(){
-    axios.post("/api/postData",{
-      data:text
-    }).then((res)=>{
-    }).catch((res)=>{  
+  function handleGen() {
+    axios.post("/api/postData", {
+      data: text
+    }).then((res) => {
+    }).catch((res) => {
     })
     navigate("/result");
   }
@@ -35,15 +35,11 @@ function Main() {
     <div className="main-content">
       {/* <h2 >Novel_Transformer_Networks_for_Improved_Sequence_Labeling_in_genomics </h2> */}
       <div className="main-function-button">
-        <div className="funciton-button">
-          <label htmlFor="file-input" style={{fontSize:"30px"}}>导入</label>
-          <input
-            id="file-input"
-            type="file"
-            onChange={(e) => onFileSelected(e)}
-            style={{ display: "none" }}
-          />
-        </div>
+        <button
+          className="funciton-button"
+        >
+          导入
+        </button>
 
         <button
           className="funciton-button"
