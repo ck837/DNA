@@ -4,7 +4,7 @@
     /* border: 1px solid; */
 }
 .main-function-button{
-    height: 30%;
+    height: 40%;
     border: 1px solid;
     
 }
@@ -14,23 +14,3 @@
     height: 30%;
     border: 1px solid;
 }   
-.main-text{
-    height: 40%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.main-atcg-button{
-    height: 30%;
-    border: 1px solid;
-}
-.atcg-button{
-    background-color: white;
-    border: 1px solid black;
-    margin-top: 5%;
-    margin-left: 4%;
-    width: 20%;
-    height: 30%;
-}

@@ -3,33 +3,31 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const modelTypeDic = {
+  1: 'M4C',
+  2: 'TIS',
+  3: 'TSS'
+}
+
 function Main() {
-  const [text, setText] = useState("");
+  const [type, setType] = useState(modelTypeDic[1]);
+  const [path, setPath] = useState('')
   const navigate = useNavigate();
 
   function onFileSelected(event) {
-    var selectedFile = event.target.files[0];
-    var reader = new FileReader();
-
-
-    reader.onload = function (event) {
-      setText(event.target.result)
-    };
-    reader.readAsText(selectedFile);
+    setPath(event.target.value)
   }
 
-  function handleGen() {
+  function handleTypeChange() {
     axios.post("/api/postData", {
-      data: text
+      type: type,
+      file: 
     }).then((res) => {
     }).catch((res) => {
     })
     navigate("/result");
   }
 
-  const handleTextareaChange = (event) => {
-    setText(event.target.value);
-  };
 
   return (
     <div className="main-content">
@@ -40,63 +38,35 @@ function Main() {
           <input
             id="file-input"
             type="file"
-            onChange={(e) => onFileSelected(e)}
+            onChange={(e) => {
+              onFileSelected(e)
+            }}
+            accept=".npy"
             style={{ display: "none" }}
           />
         </div>
-        <div style={{ width: '40%', height: '30%' }}>
+        <div style={{ width: '20%', height: '30%' }}>
           <button
             style={{ width: '100%', height: '100%' }}
             className="funciton-button"
             onClick={() => {
-              handleGen()
+              handleTypeChange()
             }}
           >
             生成
           </button>
         </div>
-      </div>
-      <div className="main-text">
-        <textarea
-          value={text}
-          onChange={handleTextareaChange}
-          style={{ width: "100%", height: "70%", backgroundColor: 'transparent' }}
-        ></textarea>
-      </div>
-      <div className="main-atcg-button">
-        <button
-          className="atcg-button"
-          onClick={() => {
-            setText(text + "A");
-          }}
-        >
-          A
-        </button>
-        <button
-          className="atcg-button"
-          onClick={() => {
-            setText(text + "T");
-          }}
-        >
-          T
-        </button>
-        <button
-          className="atcg-button"
-          onClick={() => {
-            setText(text + "C");
-          }}
-        >
-          C
-        </button>
-        <button
-          className="atcg-button"
-          onClick={() => {
-            setText(text + "G");
-          }}
-        >
-          G
-        </button>
-      </div>
+        <div style={{ width: '15%', height: '30%' }}>
+          <select
+            onChange={e => setType(e.target.value)}
+            style={{ width: '100%' }}
+          >
+            <option value={modelTypeDic[1]}>{modelTypeDic[1]}</option>
+            <option value={modelTypeDic[2]} > {modelTypeDic[2]}</option>
+            <option value={modelTypeDic[3]}> {modelTypeDic[3]}</option>
+          </select>
+        </div>
+      </div >
     </div>
   );
 }
